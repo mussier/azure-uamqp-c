@@ -2,7 +2,7 @@
 #Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 compileAsC11()
-
+find_package(OpenSSL REQUIRED)
 add_executable(message_receiver_sample
 	main.c)
 
@@ -31,5 +31,6 @@ if (WIN32)
 		target_link_libraries(message_receiver_sample $ENV{WolfSSLDir}/Debug/wolfssl.lib)
 	endif()
 else()
-	target_link_libraries(message_receiver_sample uamqp aziotsharedutil ssl crypto)
+	target_link_libraries(message_receiver_sample uamqp aziotsharedutil ${OPENSSL_LIBRARIES})
 endif()
+

@@ -2,7 +2,7 @@
 #Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 compileAsC11()
-
+find_package(OpenSSL REQUIRED)
 add_executable(websockets_sample
     main.c
     iothub_certs.h
@@ -24,5 +24,5 @@ if(WIN32)
     file(COPY $ENV{OpenSSLDir}/bin/libeay32.dll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug)
     file(COPY $ENV{OpenSSLDir}/bin/ssleay32.dll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug)
 else()
-    target_link_libraries(websockets_sample	uamqp aziotsharedutil ssl crypto websockets)
+    target_link_libraries(websockets_sample	uamqp aziotsharedutil ${OPENSSL_LIBRARIES} websockets)
 endif()
