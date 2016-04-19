@@ -1,6 +1,7 @@
 [submodule "azure-c-shared-utility"]
 	path = azure-c-shared-utility
-	url = https://github.com/Azure/azure-c-shared-utility.git
+	url = https://github.com/mussier/azure-c-shared-utility.git
+	branch=enable_gcc4.4
 [submodule "libwebsockets"]
 	path = libwebsockets
 	url = https://github.com/warmcat/libwebsockets.git
