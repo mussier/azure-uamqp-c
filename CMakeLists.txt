@@ -40,6 +40,8 @@ add_definitions(-DREFCOUNT_ATOMIC_DONTCARE)
 add_definitions(-D__STDC_NO_ATOMICS__=1)
 
 if(${use_wsio})
+    #Remove c99 flag for libwebsockets
+    string(REPLACE "-std=c99" "" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
     include_directories(libwebsockets/lib)
     include_directories(${PROJECT_BINARY_DIR}/libwebsockets)
     add_subdirectory(libwebsockets)
@@ -107,6 +109,8 @@ endif()
 
 if(WIN32)
     include_directories($ENV{OpenSSLDir}/include)
+else()
+    include_directories(${OPENSSL_INCLUDE_DIR})
 endif()
 
 set(uamqp_h_files
